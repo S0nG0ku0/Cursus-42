@@ -6,13 +6,13 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:31:17 by ohaida            #+#    #+#             */
-/*   Updated: 2023/11/03 17:03:57 by ohaida           ###   ########.fr       */
+/*   Updated: 2023/11/03 18:17:08 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	alloc_mem(char const *s, unsigned int start, size_t len)
+static int	alloc_mem(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	size_t	s_len;
