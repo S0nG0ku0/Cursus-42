@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 21:21:10 by ohaida            #+#    #+#             */
-/*   Updated: 2023/11/03 22:17:32 by ohaida           ###   ########.fr       */
+/*   Updated: 2023/11/04 12:17:41 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,10 @@ static int	set_start(char const *s1, char const *set)
 
 	i = 0;
 	j = 0;
-	while (s1[i])
-	{
-		if (is_set(s1[i], set))
-			j++;
+	if (set == NULL)
+		return (0);
+	while (s1[i] && is_set(s1[i], set))
 		i++;
-	}
 	return (i);
 }
 
@@ -49,9 +47,13 @@ static int	set_end(char const *s1, char const *set)
 	size_t	len;
 
 	len = ft_strlen(s1);
-	while (s1[len] && !is_set(s1[len], set))
+	if (set == NULL)
+		return (ft_strlen(s1));
+	while (len > 0 && is_set(s1[len - 1], set))
 		len--;
-	return (len);
+	if (len <= 0)
+		return (ft_strlen(s1));
+	return (len - 1);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
@@ -62,12 +64,17 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*str;
 
 	i = 0;
+	if (s1 == NULL)
+		return (NULL);
 	start = set_start(s1, set);
 	end = set_end(s1, set);
-	str = malloc((end - start) + 2);
+	if (set == NULL)
+		str = malloc(ft_strlen(s1) + 1);
+	else
+		str = malloc((end - start) + 2);
 	if (str == NULL)
 		return (NULL);
-	while (start < end && s[i])
+	while (start <= end)
 	{
 		str[i] = s1[start];
 		i++;

@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 10:17:39 by ohaida            #+#    #+#             */
-/*   Updated: 2023/11/02 11:12:21 by ohaida           ###   ########.fr       */
+/*   Updated: 2023/11/04 10:20:09 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 			return ((char *)&haystack[i]);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
