@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 10:49:59 by ohaida            #+#    #+#             */
-/*   Updated: 2023/11/02 14:59:27 by ohaida           ###   ########.fr       */
+/*   Updated: 2023/11/05 19:59:12 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ size_t	ft_strlcat(char *dest, char *src, size_t size)
 
 	i = 0;
 	j = 0;
-	dest_len = ft_strlen(dest);
 	src_len = ft_strlen(src);
+	if (!dest && size == 0)
+		return (src_len);
+	dest_len = ft_strlen(dest);
 	while (i < size && dest[i])
 		i++;
 	if (i == size)

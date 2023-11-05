@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 11:02:24 by ohaida            #+#    #+#             */
-/*   Updated: 2023/11/05 20:12:57 by ohaida           ###   ########.fr       */
+/*   Created: 2023/11/05 19:39:48 by ohaida            #+#    #+#             */
+/*   Updated: 2023/11/05 21:17:52 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+// #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
-{
-	int	i;
+// void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+// {
+// 	char	*r;
+// 	int		i;
 
-	i = 0;
-	if (!s)
-		return ;
-	while (s[i])
-	{
-		ft_putchar_fd(s[i], fd);
-		i++;
-	}
-	ft_putchar_fd('\n', fd);
-}
+// 	if (!s || !f)
+// 		return ;
+// 	r = ft_calloc(ft_strlen(s) + 1, sizeof(char));
+// 	if (r == NULL)
+// 		return (NULL);
+// 	i = 0;
+// 	while (*s)
+// 	{
+// 		r[i] = f(i, *s);
+// 		i++;
+// 		s++;
+// 	}
+// }

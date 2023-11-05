@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:27:20 by ohaida            #+#    #+#             */
-/*   Updated: 2023/11/03 18:17:18 by ohaida           ###   ########.fr       */
+/*   Updated: 2023/11/05 20:08:44 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
+	if (!s1 || !s2)
+		return (NULL);
 	str = malloc(alloc_mem(s1, s2) + 1);
 	if (str == NULL)
 		return (NULL);
