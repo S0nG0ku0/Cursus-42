@@ -6,27 +6,22 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 19:39:48 by ohaida            #+#    #+#             */
-/*   Updated: 2023/11/05 21:17:52 by ohaida           ###   ########.fr       */
+/*   Updated: 2023/11/06 10:45:44 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libft.h"
+#include "libft.h"
 
-// void	ft_striteri(char *s, void (*f)(unsigned int, char*))
-// {
-// 	char	*r;
-// 	int		i;
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	int		i;
 
-// 	if (!s || !f)
-// 		return ;
-// 	r = ft_calloc(ft_strlen(s) + 1, sizeof(char));
-// 	if (r == NULL)
-// 		return (NULL);
-// 	i = 0;
-// 	while (*s)
-// 	{
-// 		r[i] = f(i, *s);
-// 		i++;
-// 		s++;
-// 	}
-// }
+	if (!s || !f)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		f((unsigned int) i, &s[i]);
+		i++;
+	}
+}
