@@ -1,9 +1,0 @@
-{
-	"C_Cpp.errorSquiggles": "disabled",
-	"files.associations": {
-		"iterator": "c",
-		"libft.h": "c",
-		"__node_handle": "c",
-		"chrono": "c"
-	}
-}
