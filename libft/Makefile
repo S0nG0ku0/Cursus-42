@@ -6,7 +6,7 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c
 OBJ = $(SRC:.c=.o)
 SRCB = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-	ft_lstadd_back.c
+	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c
 OBJB = $(SRCB:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
