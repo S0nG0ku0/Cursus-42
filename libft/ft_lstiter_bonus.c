@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:03:48 by ohaida            #+#    #+#             */
-/*   Updated: 2023/11/07 23:19:20 by ohaida           ###   ########.fr       */
+/*   Updated: 2023/11/07 23:25:42 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-
 	while (!lst || !f)
 		return ;
 	while (lst)

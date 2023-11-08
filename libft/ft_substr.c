@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:31:17 by ohaida            #+#    #+#             */
-/*   Updated: 2023/11/05 20:10:47 by ohaida           ###   ########.fr       */
+/*   Updated: 2023/11/08 14:14:21 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,16 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	i = 0;
 	if (!s)
 		return (NULL);
-	if (s[0] == '\0' || start >= ft_strlen(s))
+	if (!s[0] || start >= ft_strlen(s))
 	{
 		str = malloc(1);
+		if (!str)
+			return (NULL);
 		str[0] = '\0';
 		return (str);
 	}
 	str = malloc(alloc_mem(s, start, len) + 1);
-	if (str == NULL)
+	if (!str)
 		return (NULL);
 	while (i < len && s[start])
 	{

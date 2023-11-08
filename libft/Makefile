@@ -6,7 +6,8 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c
 OBJ = $(SRC:.c=.o)
 SRCB = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c \
-	ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c
+	ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c \
+	ft_lstmap_bonus.c
 OBJB = $(SRCB:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -15,13 +16,10 @@ NAME = libft.a
 
 all: $(NAME)
 
-bonus: all $(OBJB)
-	$(AR) $(NAME) $(OBJB)
-
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
 
-$(BONUS): $(OBJB)
+bonus: $(OBJB)
 	$(AR) $(NAME) $(OBJB)
 
 %.o: %.c libft.h
