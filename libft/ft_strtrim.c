@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 21:21:10 by ohaida            #+#    #+#             */
-/*   Updated: 2023/11/04 12:17:41 by ohaida           ###   ########.fr       */
+/*   Updated: 2023/11/08 14:43:00 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	i = 0;
 	if (s1 == NULL)
 		return (NULL);
+	if (*s1 == '\0')
+		return (ft_strdup(""));
 	start = set_start(s1, set);
 	end = set_end(s1, set);
 	if (set == NULL)
@@ -75,11 +77,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (str == NULL)
 		return (NULL);
 	while (start <= end)
-	{
-		str[i] = s1[start];
-		i++;
-		start++;
-	}
+		str[i++] = s1[start++];
 	str[i] = '\0';
 	return (str);
 }

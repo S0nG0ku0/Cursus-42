@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:31:17 by ohaida            #+#    #+#             */
-/*   Updated: 2023/11/08 14:14:21 by ohaida           ###   ########.fr       */
+/*   Updated: 2023/11/08 14:38:51 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static int	alloc_mem(char const *s, unsigned int start, size_t len)
 	size_t	i;
 	size_t	s_len;
 
-	s_len = ft_strlen(s);
+	s_len = ft_strlen(s + start);
 	i = 0;
-	if (len > s_len)
-		return (s_len - start);
+	if (len >= s_len)
+		return (s_len);
 	if (s_len > len)
 		return (len);
 	return (len - start);
@@ -43,7 +43,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (str);
 	}
 	str = malloc(alloc_mem(s, start, len) + 1);
-	if (!str)
+	if (str == NULL)
 		return (NULL);
 	while (i < len && s[start])
 	{
