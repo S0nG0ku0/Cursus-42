@@ -6,34 +6,75 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 11:21:40 by ohaida            #+#    #+#             */
-/*   Updated: 2023/11/07 16:17:28 by ohaida           ###   ########.fr       */
+/*   Updated: 2023/11/08 16:22:13 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static int	is_space(char c)
+{
+	if (c == '\f' || c == '\n' || c == ' ')
+		return (1);
+	if (c == '\r' || c == '\t' || c == '\v')
+		return (1);
+	return (0);
+}
+
+static const char	*is_oper(char c, const char **str, int *neg)
+{
+	if (c == '+' || c == '-')
+	{
+		if (c == '-')
+			*neg = (*neg) * -1;
+		return ((*str) + 1);
+	}
+	return (*str);
+}
+
+int	check_overflow(long long n)
+{
+	long long	result;
+
+	result = n * 10;
+	if (result / 10 == n)
+		return (0);
+	return (1);
+}
+
+int	check_max_long(unsigned long long n, int neg)
+{
+	if (n >= ~((unsigned long long)1 << 63) && neg == 1)
+		return (-1);
+	if (n >= ((unsigned long long)1 << 63) && neg == -1)
+		return (0);
+	return (1);
+}
+
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	res;
-	int	sign;
+	unsigned long long	n;
+	int					neg;
 
-	i = 0;
-	res = 0;
-	sign = 1;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-')
+	n = 0;
+	neg = 1;
+	while (is_space(*str))
+		str++;
+	str = is_oper(*str, &str, &neg);
+	while (*str)
 	{
-		sign *= -1;
-		i++;
+		if (*str < '0' || *str > '9')
+			return (n * neg);
+		if (check_overflow(n))
+		{
+			if (neg == 1)
+				return (-1);
+			return (0);
+		}
+		n = n * 10 + (*str) - '0';
+		str++;
 	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] && ft_isdigit(str[i]))
-	{
-		res = (res * 10) + (str[i] - '0');
-		i++;
-	}
-	return (res * sign);
+	if (check_max_long(n, neg) <= 0)
+		return (check_max_long(n, neg));
+	return (n * neg);
 }
