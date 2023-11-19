@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 15:13:13 by ohaida            #+#    #+#             */
-/*   Updated: 2023/11/19 20:33:51 by ohaida           ###   ########.fr       */
+/*   Created: 2023/11/19 19:32:50 by ohaida            #+#    #+#             */
+/*   Updated: 2023/11/19 19:48:44 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
+int	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
 
-int	ft_printf(const char *str, ...);
-int	ft_putstr_fd(char *s, int fd);
-int	ft_putnbr_fd(int nb, int fd);
-int	ft_putchar_fd(char c, int fd);
-int	intohex(unsigned long number, char c);
-int	ft_putnbr_fd_u(unsigned int nb, int fd);
-
-#endif
+	i = 0;
+	if (!s)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (s[i])
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}
+	return (i);
+}
