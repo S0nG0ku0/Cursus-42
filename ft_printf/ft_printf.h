@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 10:36:38 by ohaida            #+#    #+#             */
-/*   Updated: 2023/11/19 13:51:14 by ohaida           ###   ########.fr       */
+/*   Created: 2023/11/14 15:13:13 by ohaida            #+#    #+#             */
+/*   Updated: 2023/11/19 12:06:28 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <limits.h>
 
-void	ft_putstr_fd(char *s, int fd)
-{
-	int	i;
-
-	if (fd < 0)
-		return ;
-	i = 0;
-	if (!s)
-		return ;
-	while (s[i])
-	{
-		ft_putchar_fd(s[i], fd);
-		i++;
-	}
-}
+int	ft_printf(const char *str, ...);

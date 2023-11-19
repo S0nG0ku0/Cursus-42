@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 11:02:24 by ohaida            #+#    #+#             */
-/*   Updated: 2023/11/05 20:12:57 by ohaida           ###   ########.fr       */
+/*   Updated: 2023/11/19 13:50:43 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putendl_fd(char *s, int fd)
 	int	i;
 
 	i = 0;
+	if (fd < 0)
+		return ;
 	if (!s)
 		return ;
 	while (s[i])
