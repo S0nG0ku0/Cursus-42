@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 21:58:16 by ohaida            #+#    #+#             */
-/*   Updated: 2023/11/24 15:21:38 by ohaida           ###   ########.fr       */
+/*   Updated: 2023/11/27 14:03:15 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,10 @@ void	*ft_calloc(size_t count, size_t size)
 		return (NULL);
 	ft_bzero(alloc, count * size);
 	return (alloc);
+}
+#include <stdio.h>
+int main()
+{
+	int *p = calloc(-1, -1);
+	printf("%p", p);
 }
