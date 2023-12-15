@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/15 11:35:25 by ohaida            #+#    #+#             */
+/*   Updated: 2023/12/15 15:30:15 by ohaida           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 size_t	ft_strlen(const char *s)
@@ -20,11 +32,15 @@ static int	alloc_mem(char const *s1, char const *s2)
 	return (s1_len + s2_len);
 }
 
-char *ft_getleast(char *b)
+char	*ft_getleast(char *b)
 {
-	char *tmp = NULL;
-	int i = 0;
-	int j = 0;
+	char	*tmp;
+	int		i;
+	int		j;
+
+	tmp = NULL;
+	i = 0;
+	j = 0;
 	while (b[i] != '\0' && b[i] != '\n')
 		i++;
 	if (b[i] == '\n')
@@ -49,10 +65,8 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	i = 0;
 	j = 0;
-	if (!s1 && !s2)
+	if (!s1 || !s2)
 		return (NULL);
-	// else if (!s1)
-	// 	return (s2);
 	str = malloc(alloc_mem(s1, s2) + 1);
 	if (str == NULL)
 		return (NULL);
