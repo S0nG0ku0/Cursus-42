@@ -6,17 +6,19 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 11:35:18 by ohaida            #+#    #+#             */
-/*   Updated: 2023/12/15 15:30:09 by ohaida           ###   ########.fr       */
+/*   Updated: 2023/12/15 19:50:25 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+
+# include "get_next_line.h"
 
 char	*allocate_memory(char *line, char *b)
 {
 	char	*tmp;
 
-	tmp = calloc(ft_strlen(line) + ft_strlen(b) + 1, 1);
+	tmp = NULL;
+	tmp = ft_calloc(ft_strlen(line) + ft_strlen(b) + 1, 1);
 	tmp[ft_strlen(line) + ft_strlen(b)] = '\0';
 	return (tmp);
 }
@@ -59,9 +61,9 @@ char	*aaa(t_arg *arg, char **rest, int fd)
 {
 	while (arg->bytes_read > 0)
 	{
-		arg->b = (char *)calloc((size_t)BUFFER_SIZE + 1, 1);
-		arg->bytes_read = read(fd, arg->b, BUFFER_SIZE);
+		arg->b = (char *)ft_calloc((size_t)BUFFER_SIZE + 1, 1);
 		arg->b[BUFFER_SIZE] = '\0';
+		arg->bytes_read = read(fd, arg->b, BUFFER_SIZE);
 		if (*rest)
 		{
 			arg->b = ft_strjoin(*rest, arg->b);
@@ -85,17 +87,76 @@ char	*aaa(t_arg *arg, char **rest, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char		*rest;
+	static char		*rest = NULL;
 	t_arg			arg;
 
 	arg.i = 0;
 	arg.tmp = NULL;
 	arg.b = NULL;
+	arg.line = NULL;
 	arg.bytes_read = 1;
-	if (fd < 0 || fd >= OPEN_MAX
+	if (fd < 0 || BUFFER_SIZE > INT_MAX
 		|| BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-		return (free(rest), NULL);
-	arg.line = malloc(1);
+	{
+		return (free(rest), rest = NULL, NULL);
+	}
+	arg.line = ft_calloc(1, 1);
 	*(arg.line) = '\0';
 	return (aaa(&arg, &rest, fd));
 }
+
+// int main()
+// {
+// 	int fd = open("/dev/urandom", O_RDONLY);
+// 	char *line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// }
