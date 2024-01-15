@@ -5,44 +5,65 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/15 11:35:25 by ohaida            #+#    #+#             */
-/*   Updated: 2023/12/15 19:50:12 by ohaida           ###   ########.fr       */
+/*   Created: 2024/01/11 15:34:16 by ohaida            #+#    #+#             */
+/*   Updated: 2024/01/11 15:42:19 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+char	*ft_gettext(char *line)
 {
-	unsigned long	i;
-	unsigned char	*str;
+	char	*res;
+	int		i;
 
 	i = 0;
-	str = b;
-	while (i < len)
+	if (!line || !*line)
+		return (free(line), line = NULL, NULL);
+	while (line[i] && line[i] != '\n')
+		i++;
+	if (!ft_strchr(line, '\n'))
+		i--;
+	res = malloc(i + 2);
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (line[i] && line[i] != '\n')
 	{
-		str[i] = (unsigned char)c;
+		res[i] = line[i];
 		i++;
 	}
-	return (b);
+	if (line[i] == '\n')
+		res[i++] = '\n';
+	res[i] = 0;
+	return (res);
 }
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_strchr(char *s, int c)
 {
-	void	*alloc;
+	int				i;
+	unsigned char	x;
 
-	alloc = (void *)malloc(count * size);
-	if (alloc == NULL)
+	i = 0;
+	x = c;
+	if (!s)
 		return (NULL);
-	ft_memset(alloc, '\0', count * size);
-	return (alloc);
+	while (s[i])
+	{
+		if (s[i] == x)
+			return ((char *)&s[i]);
+		i++;
+	}
+	return (0);
 }
 
 size_t	ft_strlen(const char *s)
 {
-	int		i;
+	int	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i])
 		i++;
 	return (i);
@@ -61,7 +82,9 @@ char	*ft_getleast(char *b)
 		i++;
 	if (b[i] == '\n')
 		i++;
-	tmp = ft_calloc(ft_strlen(b) - i + 1, 1);
+	tmp = malloc(ft_strlen(b) - i + 1);
+	if (!tmp)
+		return (free(b), b = NULL, NULL);
 	while (b[i] != '\0')
 	{
 		tmp[j] = b[i];
@@ -69,35 +92,33 @@ char	*ft_getleast(char *b)
 		j++;
 	}
 	tmp[j] = '\0';
-	free(b);
+	(free(b), b = NULL);
 	return (tmp);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	size_t	i;
-	size_t	j;
-	char	*str;
+	char	*res;
+	int		i;
+	int		j;
 
-	i = 0;
+	i = -1;
 	j = 0;
-	if (!s1 && !s2)
-		return (NULL);
-	str = calloc((ft_strlen(s1) + ft_strlen(s2)) + 1, 1);
-	if (str == NULL)
-		return (NULL);
-	while (s1[i])
-	{
-		str[i] = s1[i];
-		i++;
-	}
+	if (!s1)
+		return (ft_strdup(s2));
+	if (!s2)
+		return (ft_strdup(s1));
+	res = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!res)
+		return (free(s1), NULL);
+	while (s1[++i])
+		res[i] = s1[i];
 	while (s2[j])
 	{
-		str[i] = s2[j];
-		i++;
+		res[i + j] = s2[j];
 		j++;
 	}
-	str[i] = '\0';
-	(free(s1), free(s2));
-	return (str);
+	res[i + j] = 0;
+	free(s1);
+	return (res);
 }
