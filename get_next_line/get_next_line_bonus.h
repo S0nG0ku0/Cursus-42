@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*    get_next_line_bonus.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 17:39:01 by ohaida            #+#    #+#             */
-/*   Updated: 2024/01/23 17:39:02 by ohaida           ###   ########.fr       */
+/*   Created: 2024/01/23 17:37:44 by ohaida            #+#    #+#             */
+/*   Updated: 2024/01/28 17:41:53 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
 # include <limits.h>

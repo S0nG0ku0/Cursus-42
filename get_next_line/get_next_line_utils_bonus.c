@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 17:38:45 by ohaida            #+#    #+#             */
-/*   Updated: 2024/01/23 17:38:47 by ohaida           ###   ########.fr       */
+/*   Created: 2024/01/23 17:38:37 by ohaida            #+#    #+#             */
+/*   Updated: 2024/01/28 17:43:11 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_gettext(char *line)
 {

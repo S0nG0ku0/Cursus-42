@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 17:38:54 by ohaida            #+#    #+#             */
-/*   Updated: 2024/02/02 08:34:31 by ohaida           ###   ########.fr       */
+/*   Created: 2024/01/23 17:38:24 by ohaida            #+#    #+#             */
+/*   Updated: 2024/02/02 08:33:35 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strdup(const char *s1)
 {
@@ -58,18 +58,20 @@ char	*ft_read(int fd, char *str)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*buffer;
+	static char	*buffer[OPEN_MAX];
 
 	line = 0;
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > OPEN_MAX)
+		return (NULL);
 	if (BUFFER_SIZE <= 0
 		|| read(fd, 0, 0) == -1 || BUFFER_SIZE > INT_MAX)
-		return (free(buffer), buffer = NULL, NULL);
-	buffer = ft_read(fd, buffer);
-	if (!buffer)
+		return (free(buffer[fd]), buffer[fd] = NULL, NULL);
+	buffer[fd] = ft_read(fd, buffer[fd]);
+	if (!buffer[fd])
 		return (NULL);
-	line = ft_gettext(buffer);
+	line = ft_gettext(buffer[fd]);
 	if (!line)
-		return (free (buffer), buffer = NULL, NULL);
-	buffer = ft_getleast(buffer);
+		return (free (buffer[fd]), buffer[fd] = NULL, NULL);
+	buffer[fd] = ft_getleast(buffer[fd]);
 	return (line);
 }
