@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 21:17:53 by ohaida            #+#    #+#             */
-/*   Updated: 2024/03/30 20:52:54 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/01 17:56:49 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 3)
 	{
-		write(2, "Usage: ./client <PID> <MESSAGE>\n", 18);
+		write(2, "Usage: ./client <PID> <MESSAGE>\n", 33);
 		return (0);
 	}
 	if (checkdigit(argv[1]) == 1)

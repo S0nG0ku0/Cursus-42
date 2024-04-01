@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 21:17:46 by ohaida            #+#    #+#             */
-/*   Updated: 2024/03/30 20:52:46 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/01 17:59:27 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(void)
 
 	write(1, "PID : ", 6);
 	ft_putnbr_fd(getpid(), 1);
+	write(1, "\n", 1);
 	act.sa_flags = SA_SIGINFO;
 	act.sa_sigaction = ft_print;
 	sigaction(SIGUSR1, &act, NULL);
