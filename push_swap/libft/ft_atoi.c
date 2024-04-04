@@ -6,11 +6,13 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 11:21:40 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/02 22:42:39 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/04 22:44:15 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include "libft.h"
+#include <limits.h>
 
 static int	is_space(char c)
 {
@@ -34,12 +36,9 @@ static const char	*is_oper(char c, const char **str, int *neg)
 
 int	check_overflow(long long n)
 {
-	long long	result;
-
-	result = n * 10;
-	if (result / 10 == n)
-		return (0);
-	return (1);
+	if (n > INT_MAX || n < INT_MIN)
+		return (1);
+	return (0);
 }
 
 int	check_max_long(unsigned long long n, int neg)
@@ -67,9 +66,8 @@ long long	ft_atoi(const char *str)
 			return (n * neg);
 		if (check_overflow(n))
 		{
-			if (neg == 1)
-				return (-1);
-			return (0);
+			ft_printf("Error: Overflow detected.\n");
+			exit(1);
 		}
 		n = n * 10 + (*str) - '0';
 		str++;

@@ -1,17 +1,48 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "./libft/ft_printf.h"
+#include "libft/libft.h"
 
 void check_for_char(char **tab) {
     int i = 0;
     while (tab[i] != NULL) {
         int j = 0;
         while (tab[i][j] != '\0') {
-            if (ft_isalpha(tab[i][j])) {
+            if (ft_isdigit(tab[i][j])) {
+                return ;
+            }
+            else
+            {
                 ft_printf("Error: Character detected in input.\n");
                 exit(1);
             }
             j++;
+        }
+        i++;
+    }
+}
+
+void check(char **tab)
+{
+    int i = 0;
+    int j = 0;
+    int count = 0;
+    while (tab[i] != NULL)
+    {
+        j = 0;
+        count = 0;
+        if (tab[i][0] == '+' || tab[i][0] == '-')
+                j++;
+        while (tab[i][j] != '\0')
+        {
+            if (!ft_isdigit(tab[i][j]))
+                count++;
+            j++;
+        }
+        if (count >= 1)
+        {
+            ft_printf("Error: Invalid input.\n");
+            exit(1);
         }
         i++;
     }
@@ -103,13 +134,13 @@ int	main(int argc, char **argv)
       i++;
   }
   check_for_char(tab);
+  check(tab);
   numArray = convert_tab_to_int_array(tab);
   check_duplicates(numArray);
-  while (*tab)
+  while (*numArray)
   {
-    ft_printf("%s\n", *tab);
-    tab++;
+    ft_printf("%d\n", *numArray);
+    numArray++;
   }
-//   system("leaks push_swap");
   return (0);
 }
