@@ -1,3 +1,4 @@
+#include <limits.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include "./libft/ft_printf.h"
@@ -7,6 +8,8 @@ void check_for_char(char **tab) {
     int i = 0;
     while (tab[i] != NULL) {
         int j = 0;
+        if (tab[i][0] == '+' || tab[i][0] == '-')
+            j++;
         while (tab[i][j] != '\0') {
             if (ft_isdigit(tab[i][j])) {
                 return ;
@@ -50,6 +53,7 @@ void check(char **tab)
 
 int	*convert_tab_to_int_array(char **tab)
 {
+    ft_printf("tab: %s\n", *tab);
     char **tabPtr = tab;
     int tabSize = 0;
     while (*tabPtr)
@@ -73,7 +77,23 @@ int	*convert_tab_to_int_array(char **tab)
     return (numArray);
 }
 
-char **ft_concat_arrays(char **arr1, char **arr2) {
+void is_overflow(int n, char *str)
+{
+    int count = 0;
+    if (str[0] == '+' || str[0] == '-')
+        count++;
+    while (str[count] == '0')
+        count++;
+    if (ft_strlen(str) - count >= 10 && n < INT_MAX)
+    {
+        ft_printf("Error: Overflow detected.\n");
+        exit(1);
+    }
+}
+
+
+char **ft_concat_arrays(char **arr1, char **arr2) 
+{
     int i = 0, j = 0;
     while (arr1[i] != NULL) 
       i++;
@@ -92,7 +112,7 @@ char **ft_concat_arrays(char **arr1, char **arr2) {
         k++;
     }
     result[i + j] = NULL;
-    return result;
+    return (result);
 }
 
 void check_duplicates(int *numArray) {
@@ -137,6 +157,7 @@ int	main(int argc, char **argv)
   check(tab);
   numArray = convert_tab_to_int_array(tab);
   check_duplicates(numArray);
+  is_overflow(*numArray, *tab);
   while (*numArray)
   {
     ft_printf("%d\n", *numArray);

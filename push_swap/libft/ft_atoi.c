@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 11:21:40 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/04 22:44:15 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/05 01:21:03 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int	check_max_long(unsigned long long n, int neg)
 
 long long	ft_atoi(const char *str)
 {
-	unsigned long long	n;
-	int					neg;
+	unsigned long long n;
+	int	neg;
 
 	n = 0;
 	neg = 1;
@@ -64,7 +64,7 @@ long long	ft_atoi(const char *str)
 	{
 		if (*str < '0' || *str > '9')
 			return (n * neg);
-		if (check_overflow(n))
+		if (check_overflow(n) || (n != n * neg))
 		{
 			ft_printf("Error: Overflow detected.\n");
 			exit(1);
