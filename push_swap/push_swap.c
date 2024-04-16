@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "./libft/ft_printf.h"
-#include "libft/libft.h"
+#include "./libft/libft.h"
 
 void check_for_char(char **tab) {
     int i = 0;
@@ -24,8 +24,6 @@ void check_for_char(char **tab) {
     }
 }
 
-
-
 void check(char **tab)
 {
     int i = 0;
@@ -43,7 +41,7 @@ void check(char **tab)
                 count++;
             j++;
         }
-        if (count >= 1)
+        if (count >= 1 || ((tab[i][0] == '+' || tab[i][0] == '-') && !ft_isdigit(tab[i][1])))
         {
             ft_printf("Error: Invalid input.\n");
             exit(1);
@@ -52,7 +50,26 @@ void check(char **tab)
     }
 }
 
-int	*convert_tab_to_int_array(char **tab)
+void push_swap(int *numArray, int count)
+{
+    int a[count];
+    // int b[count];
+
+    int i = 0;
+    while (i < count)
+    {
+        a[i] = numArray[i];
+        i++;
+    }
+    i = 0;
+    while (i < count)
+    {
+        ft_printf("%d\n", a[i]);
+        i++;
+    }
+}
+
+int	*convert_tab_to_int_array(char **tab, int *count)
 {
     char **tabPtr = tab;
     int tabSize = 0;
@@ -61,7 +78,7 @@ int	*convert_tab_to_int_array(char **tab)
         tabSize++;
         tabPtr++;
     }
-    int *numArray = (int *)malloc(sizeof(int) * tabSize);
+    int *numArray = (int *)ft_malloc(sizeof(int) * (tabSize), 0);
     if (!numArray)
     {
         return (NULL);
@@ -74,6 +91,7 @@ int	*convert_tab_to_int_array(char **tab)
         i++;
         tabPtr++;
     }
+    *count = i;
     return (numArray);
 }
 
@@ -84,7 +102,7 @@ char **ft_concat_arrays(char **arr1, char **arr2)
       i++;
     while (arr2[j] != NULL) 
       j++;
-    char **result = malloc((i + j + 1) * sizeof(char *));
+    char **result = ft_malloc((i + j + 1) * sizeof(char *), 0);
     if (result == NULL) return NULL;
     int k = 0;
     while (k < i) {
@@ -100,12 +118,8 @@ char **ft_concat_arrays(char **arr1, char **arr2)
     return (result);
 }
 
-void check_duplicates(int *numArray) {
+void check_duplicates(int *numArray, int count) {
     int i = 0;
-    int count = 0;
-    while (numArray[count] != '\0') {
-        count++;
-    }
     while(i < count) {
         int j = i + 1;
         while(j < count) {
@@ -117,11 +131,12 @@ void check_duplicates(int *numArray) {
         }
         i++;
     }
-}
+} 
 
 int	main(int argc, char **argv)
 {
   int i = 1;
+  int count;
   char **tab = NULL;
   char **temp = NULL;
   int *numArray = NULL;
@@ -140,12 +155,9 @@ int	main(int argc, char **argv)
   }
   check_for_char(tab);
   check(tab);
-  numArray = convert_tab_to_int_array(tab);
-  check_duplicates(numArray);
-  while (*numArray)
-  {
-    ft_printf("%d\n", *numArray);
-    numArray++;
-  }
+  numArray = convert_tab_to_int_array(tab, &count);
+  check_duplicates(numArray, count);
+  push_swap(numArray, count);
+  ft_malloc(0, 1);
   return (0);
 }

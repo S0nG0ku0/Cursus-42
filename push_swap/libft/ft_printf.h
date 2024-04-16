@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:13:13 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/03 01:54:32 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/16 15:06:49 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-#include "libft.h"
 
 int	ft_printf(const char *str, ...);
 int	ft_putstr_fd(char *s, int fd);

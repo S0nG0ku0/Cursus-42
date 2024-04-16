@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:24:15 by ohaida            #+#    #+#             */
-/*   Updated: 2023/11/06 15:56:57 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/16 15:26:55 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static char	*ft_strdub(char const *s, int len)
 	char	*result;
 	int		i;
 
-	result = (char *)malloc(len + 1);
+	result = (char *)ft_malloc(len + 1, 0);
 	if (!result)
 		return (NULL);
 	i = 0;
@@ -86,7 +86,7 @@ static void	fill(char **result, char const *s, char c, int word_count)
 	}
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
 	int		word_count;
 	char	**result;
@@ -96,7 +96,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	word_count = count_words(s, c);
-	result = (char **)malloc(sizeof(char *) * (word_count + 1));
+	result = (char **)ft_malloc(sizeof(char *) * (word_count + 1), 0);
 	if (!result)
 		return (NULL);
 	fill(result, s, c, word_count);
