@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 11:21:40 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/05 01:21:03 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/16 10:28:24 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,13 @@ static const char	*is_oper(char c, const char **str, int *neg)
 	return (*str);
 }
 
-int	check_overflow(long long n)
+void	check_overflow(long long n)
 {
 	if (n > INT_MAX || n < INT_MIN)
-		return (1);
-	return (0);
-}
-
-int	check_max_long(unsigned long long n, int neg)
-{
-	if (n >= ~((unsigned long long)1 << 63) && neg == 1)
-		return (-1);
-	if (n >= ((unsigned long long)1 << 63) && neg == -1)
-		return (0);
-	return (1);
+	{
+		ft_printf("Error: Overflow.\n");
+		exit(1);
+	}
 }
 
 long long	ft_atoi(const char *str)
@@ -64,15 +57,9 @@ long long	ft_atoi(const char *str)
 	{
 		if (*str < '0' || *str > '9')
 			return (n * neg);
-		if (check_overflow(n) || (n != n * neg))
-		{
-			ft_printf("Error: Overflow detected.\n");
-			exit(1);
-		}
 		n = n * 10 + (*str) - '0';
 		str++;
 	}
-	if (check_max_long(n, neg) <= 0)
-		return (check_max_long(n, neg));
+	check_overflow(n);
 	return (n * neg);
 }
