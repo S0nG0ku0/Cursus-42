@@ -50,21 +50,35 @@ void check(char **tab)
     }
 }
 
-void push_swap(int *numArray, int count)
+void push_swap(int *numArray, int count_a)
 {
-    int a[count];
-    // int b[count];
+    int count_b = 0;
+    int a[count_a];
+    int b[count_a];
 
     int i = 0;
-    while (i < count)
+    while (i < count_a)
     {
         a[i] = numArray[i];
         i++;
     }
+    // swap_a(a, count_a);
+    push_b(a, b, &count_a, &count_b);
+    push_b(a, b, &count_a, &count_b);
+    push_b(a, b, &count_a, &count_b);
+    // push_a(a, b, &count_a, &count_b);
+    ft_printf("count_a: %d\n", count_a);
+    ft_printf("count_b: %d\n", count_b);
     i = 0;
-    while (i < count)
+    while (i < count_a)
     {
-        ft_printf("%d\n", a[i]);
+        ft_printf("a[%d]: %d\n", i, a[i]);
+        i++;
+    }
+    i = 0;
+    while (i < count_b)
+    {
+        ft_printf("b[%d]: %d\n", i, b[i]);
         i++;
     }
 }
@@ -136,7 +150,7 @@ void check_duplicates(int *numArray, int count) {
 int	main(int argc, char **argv)
 {
   int i = 1;
-  int count;
+  int count_a = 0;
   char **tab = NULL;
   char **temp = NULL;
   int *numArray = NULL;
@@ -155,9 +169,8 @@ int	main(int argc, char **argv)
   }
   check_for_char(tab);
   check(tab);
-  numArray = convert_tab_to_int_array(tab, &count);
-  check_duplicates(numArray, count);
-  push_swap(numArray, count);
+  numArray = convert_tab_to_int_array(tab, &count_a);
+  check_duplicates(numArray, count_a);
+  push_swap(numArray, count_a);
   ft_malloc(0, 1);
-  return (0);
 }

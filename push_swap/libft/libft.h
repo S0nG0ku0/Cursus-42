@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:36:43 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/16 15:06:38 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/17 11:31:29 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	*ft_malloc(int size, int bool_free);
+void	swap_a(int *num, int count);
+void	swap_b(int *num, int count);
+void	ss(int *num_a, int *num_b, int count_a, int count_b);
+void	push_a(int *a, int *b, int *count_a, int *count_b);
+void	push_b(int *a, int *b, int *count_a, int *count_b);
 
 typedef struct s_list
 {
