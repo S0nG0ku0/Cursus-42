@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:36:43 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/17 11:31:29 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/17 15:37:35 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ void	swap_b(int *num, int count);
 void	ss(int *num_a, int *num_b, int count_a, int count_b);
 void	push_a(int *a, int *b, int *count_a, int *count_b);
 void	push_b(int *a, int *b, int *count_a, int *count_b);
+void	rotate_a(int *num, int count);
+void	rotate_b(int *num, int count);
+void	rotate_a_b(int *a, int *b, int count_a, int count_b);
 
 typedef struct s_list
 {

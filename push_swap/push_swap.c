@@ -66,7 +66,9 @@ void push_swap(int *numArray, int count_a)
     push_b(a, b, &count_a, &count_b);
     push_b(a, b, &count_a, &count_b);
     push_b(a, b, &count_a, &count_b);
-    // push_a(a, b, &count_a, &count_b);
+    rotate_a(a, count_a);
+    rotate_b(b, count_b);
+    rotate_a_b(a, b, count_a, count_b);
     ft_printf("count_a: %d\n", count_a);
     ft_printf("count_b: %d\n", count_b);
     i = 0;
@@ -76,6 +78,7 @@ void push_swap(int *numArray, int count_a)
         i++;
     }
     i = 0;
+    ft_printf("---------------------------\n");
     while (i < count_b)
     {
         ft_printf("b[%d]: %d\n", i, b[i]);
