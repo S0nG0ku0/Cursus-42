@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:58:41 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/16 15:33:15 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/18 16:31:33 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static void	free_all(t_list *all_alloc)
 
 	while (all_alloc)
 	{
-        free(all_alloc->content);
-        tmp = all_alloc;
-        all_alloc = all_alloc->next;
-        free(tmp);
+		free(all_alloc->content);
+		tmp = all_alloc;
+		all_alloc = all_alloc->next;
+		free(tmp);
 	}
 }
 
@@ -52,8 +52,8 @@ void	*ft_malloc(int size, int free)
 	ptr = malloc(size);
 	if (!ptr || add_node(&all_alloc, ptr))
 	{
-        ft_printf("Error: Malloc Failed\n");
-        exit(1);
-    }
+		ft_printf("Error: Malloc Failed\n");
+		exit(1);
+	}
 	return (ptr);
 }

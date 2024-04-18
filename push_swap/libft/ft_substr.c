@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:31:17 by ohaida            #+#    #+#             */
-/*   Updated: 2023/11/08 14:38:51 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/18 16:30:20 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		start++;
 	}
 	str[i] = '\0';
-	return (str); 
+	return (str);
 }

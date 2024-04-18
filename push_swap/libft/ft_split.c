@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:24:15 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/16 15:26:55 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/18 16:30:44 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	count_words(char const *s, char c)
 			if (in_word)
 			{
 				in_word = 0;
-				count++; 
+				count++;
 			}
 		}
 		s++;

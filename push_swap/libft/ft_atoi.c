@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 11:21:40 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/16 10:28:24 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/18 16:30:59 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	check_overflow(long long n)
 
 long long	ft_atoi(const char *str)
 {
-	unsigned long long n;
-	int	neg;
+	unsigned long long	n;
+	int					neg;
 
 	n = 0;
 	neg = 1;
