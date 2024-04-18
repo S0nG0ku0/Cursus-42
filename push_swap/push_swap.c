@@ -68,7 +68,8 @@ void push_swap(int *numArray, int count_a)
     push_b(a, b, &count_a, &count_b);
     rotate_a(a, count_a);
     rotate_b(b, count_b);
-    rotate_a_b(a, b, count_a, count_b);
+    // rotate_a_b(a, b, count_a, count_b);
+    // reverse_rotate_a(a, count_a);
     ft_printf("count_a: %d\n", count_a);
     ft_printf("count_b: %d\n", count_b);
     i = 0;
