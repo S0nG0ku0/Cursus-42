@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 11:21:40 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/18 16:30:59 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/18 20:22:48 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	check_overflow(long long n)
 {
 	if (n > INT_MAX || n < INT_MIN)
 	{
-		ft_printf("Error: Overflow.\n");
+		ft_printf("Error: Overflow Detected.\n");
 		exit(1);
 	}
 }
