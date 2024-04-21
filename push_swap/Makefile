@@ -4,7 +4,7 @@ SRC = ./libft/ft_atoi.c ./libft/ft_isdigit.c ./libft/ft_strncmp.c ./libft/ft_spl
 		./instructions/rotate.c ./instructions/reverse_rotate.c ./algo/algo.c ./utils/check.c ./utils/helper.c
 OBJ = $(SRC:.c=.o)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 NAME = push_swap
 
 all: $(NAME)

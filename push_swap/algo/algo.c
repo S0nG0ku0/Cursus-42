@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:26:20 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/21 16:45:10 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/21 20:12:26 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,49 @@ void	indexing(int *num, int *count)
 
 void	algo(int *a, int *b, int *count_a, int *count_b)
 {
-	
+	int	p1;
+	int	p2;
+	int	pl;
+	int	i;
+
+	pl = 0;
+	p1 = (*count_a / 3) + pl;
+	p2 = (*count_a / 6) + pl;
+
+	i = 0;
+	while (i < *count_a)
+	{
+		ft_printf("a[%i]: %d\n", i, a[i]);
+		i++;
+	}
+	i = 0;
+	ft_printf("p1: %d\np2: %d\n", p1, p2);
+	while (*count_a > 3)
+	{
+		if (a[0] <= p1)
+			push_b(a, b, count_a, count_b);
+		else
+			rotate_a(a, *count_a);
+		if ((b[0] <= pl && b[0] >= p2) && *count_b > 0)
+			rotate_b(b, *count_b);
+		if (*count_b > p1)
+		{
+			pl = p1;
+			p1 = (*count_a / 3) + pl;
+			p2 = (*count_a / 6) + pl;
+		}
+	}
+	i = 0;
+	while (i < *count_a)
+	{
+		ft_printf("a[%i]: %d\n", i, a[i]);
+		i++;
+	}
+	ft_printf("\n");
+	i = 0;
+	while (i < *count_b)
+	{
+		ft_printf("b[%i]: %d\n", i, b[i]);
+		i++;
+	}
 }
