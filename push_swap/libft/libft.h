@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:36:43 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/19 16:38:59 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/21 10:36:34 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void		check(char **tab);
 void		check_duplicates(int *numArray, int count);
 int			*convert_tab_to_int_array(char **tab, int *count);
 void		pivoting(int *a, int *b, int *count_a, int *count_b);
-void		sort_method(int *a, int *count_a);
+void		indexing(int *num, int *count);
 
 typedef struct s_list
 {
