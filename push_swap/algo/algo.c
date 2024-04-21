@@ -6,14 +6,11 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:26:20 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/21 16:37:54 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/21 16:45:10 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
-
-#include "../libft/libft.h"
-#include <stdlib.h>
 
 static void	helper(int *sorting, int *count, int *temp, int *num)
 {
@@ -71,4 +68,9 @@ void	indexing(int *num, int *count)
 	}
 	i = 0;
 	free(sorting);
+}
+
+void	algo(int *a, int *b, int *count_a, int *count_b)
+{
+	
 }
