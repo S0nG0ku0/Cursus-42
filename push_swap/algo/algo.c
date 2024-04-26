@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:26:20 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/26 20:27:29 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/26 20:32:03 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ static void	with_index(int *a, int *b, int *count_a, int *count_b)
 
 	i = 0;
 	index = 0;
+	sort_three_numbers(a, count_a);
 	push_to_a(a, b, count_a, count_b);
 	while (*count_b)
     {
@@ -142,7 +143,7 @@ static void	with_index(int *a, int *b, int *count_a, int *count_b)
             reverse_rotate_b(b, *count_b);
 			push_to_a(a, b, count_a, count_b);
 		}
-		else 
+		else
 		{
 			rotate_b(b, *count_b);
 			push_to_a(a, b, count_a, count_b);
@@ -161,14 +162,6 @@ void	algo(int *a, int *b, int *count_a, int *count_b)
 	p1 = (*count_a / 3) + pl;
 	p2 = (*count_a / 6) + pl;
 
-	i = 0;
-	while (i < *count_a)
-	{
-		ft_printf("a[%i]: %d\n", i, a[i]);
-		i++;
-	}
-	i = 0;
-	ft_printf("p1: %d\np2: %d\n", p1, p2);
 	while (*count_a > 3)
 	{
 		if (a[0] <= p1)
@@ -184,33 +177,5 @@ void	algo(int *a, int *b, int *count_a, int *count_b)
 			p2 = (*count_a / 6) + pl;
 		}
 	}
-	sort_three_numbers(a, count_a);
-	i = 0;
-	while (i < *count_a)
-	{
-		ft_printf("a[%i]: %d\n", i, a[i]);
-		i++;
-	}
-	ft_printf("\n");
-	i = 0;
-	while (i < *count_b)
-	{
-		ft_printf("b[%i]: %d\n", i, b[i]);
-		i++;
-	}
 	with_index(a, b, count_a, count_b);
-	ft_printf("---------------------------------------\n");
-	i = 0;
-	while (i < *count_a)
-	{
-		ft_printf("a[%i]: %d\n", i, a[i]);
-		i++;
-	}
-	ft_printf("\n");
-	i = 0;
-	while (i < *count_b)
-	{
-		ft_printf("b[%i]: %d\n", i, b[i]);
-		i++;
-	}
 }
