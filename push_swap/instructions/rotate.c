@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:26:53 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/26 21:02:26 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/26 21:50:45 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	rotate(int *num, int count)
 	int	*tmp;
 
 	i = 0;
-	tmp = malloc(count);
+	tmp = ft_malloc(count * sizeof(int *), 0);
 	while (i < count)
 	{
 		tmp[i] = num[i];
