@@ -6,11 +6,12 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:26:20 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/21 20:12:26 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/26 20:27:29 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
+#include <strings.h>
 
 static void	helper(int *sorting, int *count, int *temp, int *num)
 {
@@ -70,6 +71,85 @@ void	indexing(int *num, int *count)
 	free(sorting);
 }
 
+static void	sort_three_numbers(int *a, int *count_a)
+{
+	int	i;
+	int	j;
+	int	temp;
+
+	i = 0;
+	while (i < *count_a)
+	{
+		j = i + 1;
+		while (j < *count_a)
+		{
+			if (a[i] > a[j])
+			{
+				temp = a[i];
+				a[i] = a[j];
+				a[j] = temp;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+static int	get_index(int *a, int *b, int *count_b)
+{
+	int	i;
+
+	i = 0;
+	while (i < *count_b)
+    {
+        if (b[i] == a[0] - 1)
+			return (i);
+        i++;
+    }
+	return (-1);
+}
+
+static void	push_to_a(int *a, int *b, int *count_a, int *count_b)
+{
+	int	i;
+	int index;
+
+	i = 0;
+	*count_a = *count_a;
+    while (i < *count_b)
+    {
+        if (b[i] == a[0] - 1)
+            index = i;
+		if (index == 0)
+			push_a(a, b, count_a, count_b);
+		index = 1;
+        i++;
+    }
+}
+
+static void	with_index(int *a, int *b, int *count_a, int *count_b)
+{
+	int i;
+	int index;
+
+	i = 0;
+	index = 0;
+	push_to_a(a, b, count_a, count_b);
+	while (*count_b)
+    {
+        if (get_index(a, b, count_b) > *count_b / 2)
+		{
+            reverse_rotate_b(b, *count_b);
+			push_to_a(a, b, count_a, count_b);
+		}
+		else 
+		{
+			rotate_b(b, *count_b);
+			push_to_a(a, b, count_a, count_b);
+		}
+    }
+}
+
 void	algo(int *a, int *b, int *count_a, int *count_b)
 {
 	int	p1;
@@ -104,6 +184,22 @@ void	algo(int *a, int *b, int *count_a, int *count_b)
 			p2 = (*count_a / 6) + pl;
 		}
 	}
+	sort_three_numbers(a, count_a);
+	i = 0;
+	while (i < *count_a)
+	{
+		ft_printf("a[%i]: %d\n", i, a[i]);
+		i++;
+	}
+	ft_printf("\n");
+	i = 0;
+	while (i < *count_b)
+	{
+		ft_printf("b[%i]: %d\n", i, b[i]);
+		i++;
+	}
+	with_index(a, b, count_a, count_b);
+	ft_printf("---------------------------------------\n");
 	i = 0;
 	while (i < *count_a)
 	{

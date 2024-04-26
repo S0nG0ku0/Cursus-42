@@ -20,6 +20,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME) $(BONUS)
+	rm -rf push_swap.dSYM
 
 re: fclean all
 
