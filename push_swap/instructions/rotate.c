@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:26:53 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/18 15:38:26 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/26 21:02:26 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void	rotate(int *num, int count)
 		i++;
 	}
 	num[count - 1] = tmp[0];
-	free(tmp);
 }
 
 void	rotate_a(int *num, int count)

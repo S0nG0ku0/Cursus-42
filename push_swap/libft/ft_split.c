@@ -6,24 +6,11 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:24:15 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/18 16:30:44 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/26 21:29:37 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static void	get_free(int word_count, char **result)
-{
-	int	i;
-
-	i = 0;
-	while (i < word_count)
-	{
-		free(result[i]);
-		i++;
-	}
-	free(result);
-}
 
 static int	count_words(char const *s, char c)
 {
@@ -104,10 +91,7 @@ char	**ft_split(char *s, char c)
 	while (i < word_count)
 	{
 		if (!result[i])
-		{
-			get_free(word_count, result);
 			return (NULL);
-		}
 		i++;
 	}
 	return (result);

@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:26:20 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/26 20:32:03 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/26 21:36:26 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	indexing(int *num, int *count)
 	int	*sorting;
 	int	temp;
 
-	sorting = malloc(*count * sizeof(int));
+	sorting = ft_malloc(*count * sizeof(int *), 0);
 	temp = 0;
 	helper(sorting, count, &temp, num);
 	i = 0;
@@ -67,8 +67,6 @@ void	indexing(int *num, int *count)
 		}
 		i++;
 	}
-	i = 0;
-	free(sorting);
 }
 
 static void	sort_three_numbers(int *a, int *count_a)
@@ -143,7 +141,7 @@ static void	with_index(int *a, int *b, int *count_a, int *count_b)
             reverse_rotate_b(b, *count_b);
 			push_to_a(a, b, count_a, count_b);
 		}
-		else
+		if (get_index(a, b, count_b) <= *count_b / 2)
 		{
 			rotate_b(b, *count_b);
 			push_to_a(a, b, count_a, count_b);
@@ -156,7 +154,6 @@ void	algo(int *a, int *b, int *count_a, int *count_b)
 	int	p1;
 	int	p2;
 	int	pl;
-	int	i;
 
 	pl = 0;
 	p1 = (*count_a / 3) + pl;

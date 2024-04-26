@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:21:09 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/18 15:43:05 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/26 21:06:07 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	reverse_rotate(int *num, int count)
 	int	i;
 	int	*tmp;
 
-	tmp = malloc(count);
+	tmp = (int *)ft_malloc(count * sizeof(int *), 0);
 	i = 0;
 	while (i < count)
 	{
@@ -31,7 +31,6 @@ static void	reverse_rotate(int *num, int count)
 		i++;
 	}
 	num[0] = tmp[count - 1];
-	free(tmp);
 }
 
 void	reverse_rotate_a(int *num, int count)

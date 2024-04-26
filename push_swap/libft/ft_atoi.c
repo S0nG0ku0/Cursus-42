@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 11:21:40 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/18 20:22:48 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/26 21:23:24 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static const char	*is_oper(char c, const char **str, int *neg)
 	return (*str);
 }
 
-void	check_overflow(long long n)
+void	check_overflow(long long n, int neg)
 {
-	if (n > INT_MAX || n < INT_MIN)
+	if (n * neg > INT_MAX || n * neg < -2147483648)
 	{
 		ft_printf("Error: Overflow Detected.\n");
 		exit(1);
@@ -60,6 +60,6 @@ long long	ft_atoi(const char *str)
 		n = n * 10 + (*str) - '0';
 		str++;
 	}
-	check_overflow(n);
+	check_overflow(n, neg);
 	return (n * neg);
 }

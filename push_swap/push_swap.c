@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:33:14 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/21 18:25:14 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/04/26 21:27:48 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	push_swap(int *numarray, int count_a)
 
 	count_b = 0;
 	i = 0;
-	a = malloc(sizeof(int) * count_a);
-	b = malloc(sizeof(int) * count_a);
+	a = ft_malloc(sizeof(int *) * count_a, 0);
+	b = ft_malloc(sizeof(int *) * count_a, 0);
 	while (i < count_a)
 	{
 		a[i] = numarray[i];
@@ -74,17 +74,15 @@ int	main(int argc, char **argv)
 
 	i = 1;
 	count_a = 0;
+	if (argc < 2)
+		exit(0);
 	while (i < argc)
 	{
 		temp = ft_split(argv[i], ' ');
 		if (tab == NULL)
-		{
 			tab = temp;
-		}
 		else
-		{
 			tab = ft_concat_arrays(tab, temp);
-		}
 		i++;
 	}
 	check(tab);
@@ -92,4 +90,5 @@ int	main(int argc, char **argv)
 	check_duplicates(numarray, count_a);
 	push_swap(numarray, count_a);
 	ft_malloc(0, 1);
+	system("leaks push_swap");
 }

@@ -20,7 +20,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME) $(BONUS)
-	rm -rf push_swap.dSYM
+	rm -rf push_swap.dSYM log_error .vscode
 
 re: fclean all
 
