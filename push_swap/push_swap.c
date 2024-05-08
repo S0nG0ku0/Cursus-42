@@ -6,11 +6,23 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:33:14 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/26 21:27:48 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/05/03 17:01:35 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
+
+static void	helper(char **result, char **arr1, int *i)
+{
+	int	k;
+
+	k = 0;
+	while (k < *i)
+	{
+		result[k] = arr1[k];
+		k++;
+	}
+}
 
 void	push_swap(int *numarray, int count_a)
 {
@@ -22,7 +34,14 @@ void	push_swap(int *numarray, int count_a)
 	count_b = 0;
 	i = 0;
 	a = ft_malloc(sizeof(int *) * count_a, 0);
+	if (!a)
+		exit(1);
 	b = ft_malloc(sizeof(int *) * count_a, 0);
+	if (!b)
+	{
+		free(a);
+		exit(1);
+	}
 	while (i < count_a)
 	{
 		a[i] = numarray[i];
@@ -46,14 +65,9 @@ char	**ft_concat_arrays(char **arr1, char **arr2)
 	while (arr2[j] != NULL)
 		j++;
 	result = ft_malloc((i + j + 1) * sizeof(char *), 0);
-	if (result == NULL)
-		return (NULL);
-	k = 0;
-	while (k < i)
-	{
-		result[k] = arr1[k];
-		k++;
-	}
+	if (!result)
+		exit(1);
+	helper(result, arr1, &i);
 	k = 0;
 	while (k < j)
 	{
@@ -90,5 +104,4 @@ int	main(int argc, char **argv)
 	check_duplicates(numarray, count_a);
 	push_swap(numarray, count_a);
 	ft_malloc(0, 1);
-	system("leaks push_swap");
 }
