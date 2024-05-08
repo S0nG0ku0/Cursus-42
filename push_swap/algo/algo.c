@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:26:20 by ohaida            #+#    #+#             */
-/*   Updated: 2024/05/08 14:49:31 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/05/08 16:25:31 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,21 @@
 static void	sort_three_numbers(int *a, int *count_a)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	while (i < *count_a)
+	while (1)
 	{
-		j = 0;
-		while (j < *count_a)
+		if (a[0] < a[1] && a[1] < a[2])
+			break ;
+		if (a[0] > a[1])
+			swap_a(a, *count_a);
+		if (a[0] > a[2])
+			rotate_a(a, *count_a);
+		if (a[1] > a[2])
 		{
-			if (a[i] > a[j])
-			{
-				swap_a(a, *count_a);
-			}
-			j++;
+			swap_a(a, *count_a);
+			rotate_a(a, *count_a);
+			swap_a(a, *count_a);
 		}
 	}
 }
@@ -71,8 +73,8 @@ static void	with_index(int *a, int *b, int *count_a, int *count_b)
 
 	i = 0;
 	index = 0;
-	sort_three_numbers(a, count_a);
 	push_to_a(a, b, count_a, count_b);
+	sort_three_numbers(a, count_a);
 	while (*count_b)
 	{
 		if (get_index(a, b, count_b) > *count_b / 2)

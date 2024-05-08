@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:33:14 by ohaida            #+#    #+#             */
-/*   Updated: 2024/05/03 17:01:35 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/05/08 16:26:42 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int	main(int argc, char **argv)
 	check(tab);
 	numarray = convert_tab_to_int_array(tab, &count_a);
 	check_duplicates(numarray, count_a);
+	isSorted(numarray, count_a);
 	push_swap(numarray, count_a);
 	ft_malloc(0, 1);
 }

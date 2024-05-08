@@ -6,11 +6,12 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 11:15:37 by ohaida            #+#    #+#             */
-/*   Updated: 2024/05/03 17:22:34 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/05/08 16:29:58 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
+#include <stdlib.h>
 
 static void	helper(int *sorting, int *count, int *temp, int *num)
 {
@@ -68,4 +69,18 @@ void	indexing(int *num, int *count)
 		}
 		i++;
 	}
+}
+
+int	isSorted(int *num, int count)
+{
+    int i;
+
+	i = 0;
+    while (i < count - 1)
+    {
+        if (num[i] > num[i + 1])
+            return (0);
+        i++;
+    }
+    exit(1);
 }
