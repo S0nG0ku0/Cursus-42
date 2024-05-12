@@ -6,14 +6,13 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:36:43 by ohaida            #+#    #+#             */
-/*   Updated: 2024/05/12 22:40:21 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/05/12 22:43:01 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
 # include "ft_printf.h"
