@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:33:14 by ohaida            #+#    #+#             */
-/*   Updated: 2024/05/08 16:26:42 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/05/12 16:14:24 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,16 @@ char	**ft_concat_arrays(char **arr1, char **arr2)
 	return (result);
 }
 
+static void	func_call(char **tab, int *numarray, int *count_a)
+{
+	check(tab);
+	numarray = convert_tab_to_int_array(tab, count_a);
+	check_duplicates(numarray, *count_a);
+	issorted(numarray, *count_a);
+	push_swap(numarray, *count_a);
+	ft_malloc(0, 1);
+}
+
 int	main(int argc, char **argv)
 {
 	int		i;
@@ -87,22 +97,20 @@ int	main(int argc, char **argv)
 	int		*numarray;
 
 	i = 1;
+	numarray = NULL;
 	count_a = 0;
+	temp = 0;
 	if (argc < 2)
 		exit(0);
 	while (i < argc)
 	{
 		temp = ft_split(argv[i], ' ');
+		check_empty_arg(temp, argv, &i);
 		if (tab == NULL)
 			tab = temp;
 		else
 			tab = ft_concat_arrays(tab, temp);
 		i++;
 	}
-	check(tab);
-	numarray = convert_tab_to_int_array(tab, &count_a);
-	check_duplicates(numarray, count_a);
-	isSorted(numarray, count_a);
-	push_swap(numarray, count_a);
-	ft_malloc(0, 1);
+	func_call(tab, numarray, &count_a);
 }

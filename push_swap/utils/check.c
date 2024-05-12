@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:12:22 by ohaida            #+#    #+#             */
-/*   Updated: 2024/05/03 15:44:20 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/05/12 16:12:57 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,13 @@ void	check_duplicates(int *numArray, int count)
 			j++;
 		}
 		i++;
+	}
+}
+void	check_empty_arg(char **temp, char **argv, int *i)
+{
+	if (!temp || !temp[0] || argv[*i][0] == '\0')
+	{
+		ft_printf("Error\n");
+		exit(1);
 	}
 }

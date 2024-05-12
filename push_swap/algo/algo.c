@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:26:20 by ohaida            #+#    #+#             */
-/*   Updated: 2024/05/08 16:25:31 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/05/09 23:39:14 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,14 @@
 
 static void	sort_three_numbers(int *a, int *count_a)
 {
-	int	i;
-
-	i = 0;
-	while (1)
+	while (issortedv2(a, *count_a) && *count_a == 3)
 	{
-		if (a[0] < a[1] && a[1] < a[2])
-			break ;
-		if (a[0] > a[1])
+		if (a[0] < a[1] && a[1] > a[2])
+			reverse_rotate_a(a, *count_a);
+		else if (a[0] > a[1] && a[1] < a[2])
 			swap_a(a, *count_a);
-		if (a[0] > a[2])
+		else if (a[0] > a[1] && a[1] > a[2])
 			rotate_a(a, *count_a);
-		if (a[1] > a[2])
-		{
-			swap_a(a, *count_a);
-			rotate_a(a, *count_a);
-			swap_a(a, *count_a);
-		}
 	}
 }
 
@@ -82,7 +73,7 @@ static void	with_index(int *a, int *b, int *count_a, int *count_b)
 			reverse_rotate_b(b, *count_b);
 			push_to_a(a, b, count_a, count_b);
 		}
-		if (get_index(a, b, count_b) <= *count_b / 2)
+		else if (get_index(a, b, count_b) <= *count_b / 2)
 		{
 			rotate_b(b, *count_b);
 			push_to_a(a, b, count_a, count_b);
@@ -90,29 +81,36 @@ static void	with_index(int *a, int *b, int *count_a, int *count_b)
 	}
 }
 
+static void	helper(int count_a, int *p1, int *p2, int *pl)
+{
+	*pl = *p1;
+	*p1 = (count_a / 3) + *pl;
+	*p2 = (count_a / 6) + *pl;
+}
+
 void	algo(int *a, int *b, int *count_a, int *count_b)
 {
 	int	p1;
 	int	p2;
 	int	pl;
+	int	count;
 
+	count = *count_a;
 	pl = 0;
 	p1 = (*count_a / 3) + pl;
 	p2 = (*count_a / 6) + pl;
 	while (*count_a > 3)
 	{
-		if (a[0] <= p1)
+		if (count == 4 && a[0] < p1)
+			push_b(a, b, count_a, count_b);
+		if (count > 4 && a[0] <= p1)
 			push_b(a, b, count_a, count_b);
 		else
 			rotate_a(a, *count_a);
 		if ((b[0] <= p2 && b[0] >= pl) && *count_b > 0)
 			rotate_b(b, *count_b);
 		if (*count_b > p1)
-		{
-			pl = p1;
-			p1 = (*count_a / 3) + pl;
-			p2 = (*count_a / 6) + pl;
-		}
+			helper(*count_a, &p1, &p2, &pl);
 	}
 	with_index(a, b, count_a, count_b);
 }

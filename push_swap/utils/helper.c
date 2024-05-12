@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:09:39 by ohaida            #+#    #+#             */
-/*   Updated: 2024/04/26 21:08:36 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/05/09 21:19:10 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	*convert_tab_to_int_array(char **tab, int *count)
 	}
 	numarray = (int *)ft_malloc(sizeof(int *) * (tabsize), 0);
 	if (!numarray)
-		return (NULL);
+		exit(1);
 	tabptr = tab;
 	i = 0;
 	while (*tabptr)

@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 11:15:37 by ohaida            #+#    #+#             */
-/*   Updated: 2024/05/08 16:29:58 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/05/08 22:53:35 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,30 @@ void	indexing(int *num, int *count)
 	}
 }
 
-int	isSorted(int *num, int count)
+void	issorted(int *num, int count)
 {
-    int i;
+	int	i;
 
 	i = 0;
-    while (i < count - 1)
-    {
-        if (num[i] > num[i + 1])
-            return (0);
-        i++;
-    }
-    exit(1);
+	while (i < count - 1)
+	{
+		if (num[i] > num[i + 1])
+			return ;
+		i++;
+	}
+	exit(0);
+}
+
+int	issortedv2(int *num, int count)
+{
+	int	i;
+
+	i = 0;
+	while (i < count - 1)
+	{
+		if (num[i] > num[i + 1])
+			return (1);
+		i++;
+	}
+	return(0);
 }
