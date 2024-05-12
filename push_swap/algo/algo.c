@@ -6,25 +6,12 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:26:20 by ohaida            #+#    #+#             */
-/*   Updated: 2024/05/09 23:39:14 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/05/12 22:39:58 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include <strings.h>
-
-static void	sort_three_numbers(int *a, int *count_a)
-{
-	while (issortedv2(a, *count_a) && *count_a == 3)
-	{
-		if (a[0] < a[1] && a[1] > a[2])
-			reverse_rotate_a(a, *count_a);
-		else if (a[0] > a[1] && a[1] < a[2])
-			swap_a(a, *count_a);
-		else if (a[0] > a[1] && a[1] > a[2])
-			rotate_a(a, *count_a);
-	}
-}
 
 static int	get_index(int *a, int *b, int *count_b)
 {

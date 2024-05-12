@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:36:43 by ohaida            #+#    #+#             */
-/*   Updated: 2024/05/12 22:38:05 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/05/12 22:40:21 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void		issorted(int *num, int count);
 int			issortedv2(int *num, int count);
 void		check_empty_arg(char **temp, char **argv, int *i);
 void		check_to_numbers(int count_a, int *a);
+void		sort_three_numbers(int *a, int *count_a);
 
 typedef struct s_list
 {

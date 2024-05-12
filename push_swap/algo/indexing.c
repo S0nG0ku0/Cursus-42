@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 11:15:37 by ohaida            #+#    #+#             */
-/*   Updated: 2024/05/08 22:53:35 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/05/12 22:40:06 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,18 @@ int	issortedv2(int *num, int count)
 			return (1);
 		i++;
 	}
-	return(0);
+	return (0);
+}
+
+void	sort_three_numbers(int *a, int *count_a)
+{
+	while (issortedv2(a, *count_a) && *count_a == 3)
+	{
+		if (a[0] < a[1] && a[1] > a[2])
+			reverse_rotate_a(a, *count_a);
+		else if (a[0] > a[1] && a[1] < a[2])
+			swap_a(a, *count_a);
+		else if (a[0] > a[1] && a[1] > a[2])
+			rotate_a(a, *count_a);
+	}
 }
