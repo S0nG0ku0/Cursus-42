@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:33:14 by ohaida            #+#    #+#             */
-/*   Updated: 2024/05/12 16:14:24 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/05/12 22:38:26 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	push_swap(int *numarray, int count_a)
 		a[i] = numarray[i];
 		i++;
 	}
+	check_to_numbers(count_a, a);
 	indexing(a, &count_a);
 	algo(a, b, &count_a, &count_b);
 }

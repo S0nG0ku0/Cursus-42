@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:36:43 by ohaida            #+#    #+#             */
-/*   Updated: 2024/05/12 16:13:34 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/05/12 22:38:05 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void		algo(int *a, int *b, int *count_a, int *count_b);
 void		issorted(int *num, int count);
 int			issortedv2(int *num, int count);
 void		check_empty_arg(char **temp, char **argv, int *i);
+void		check_to_numbers(int count_a, int *a);
 
 typedef struct s_list
 {
