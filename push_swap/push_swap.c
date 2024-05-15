@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:33:14 by ohaida            #+#    #+#             */
-/*   Updated: 2024/05/12 22:44:13 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/05/15 16:37:58 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	push_swap(int *numarray, int count_a)
 	algo(a, b, &count_a, &count_b);
 }
 
-char	**ft_concat_arrays(char **arr1, char **arr2)
+static char	**ft_concat_arrays(char **arr1, char **arr2)
 {
 	int		i;
 	int		j;

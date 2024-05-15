@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:12:22 by ohaida            #+#    #+#             */
-/*   Updated: 2024/05/12 22:37:48 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/05/15 16:18:14 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	check_2(int count, char **tab, int *i)
 		ft_printf("Error\n");
 		exit(1);
 	}
-	if (ft_strlen(tab[*i]) > 52)
+	if (ft_strlen(tab[*i]) > 30)
 	{
 		ft_printf("Error\n");
 		exit(1);
