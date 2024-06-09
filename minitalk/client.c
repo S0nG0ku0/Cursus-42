@@ -24,7 +24,7 @@ void	ft_send(int pid, char c)
 			if (kill(pid, SIGUSR1) == -1)
 			{
 				write(2, "Error PID!\n", 12);
-				exit(0);
+				exit(1);
 			}
 		}
 		else
@@ -32,7 +32,7 @@ void	ft_send(int pid, char c)
 			if (kill(pid, SIGUSR2) == -1)
 			{
 				write(2, "Error PID!\n", 12);
-				exit(0);
+				exit(1);
 			}
 		}
 		c >>= 1;
