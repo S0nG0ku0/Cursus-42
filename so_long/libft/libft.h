@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:36:43 by ohaida            #+#    #+#             */
-/*   Updated: 2024/06/12 03:49:24 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/06/12 22:50:36 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,13 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
-
 typedef struct s_map
 {
 	int x;
 	int c;
 	int e;
 	int y;
+	int moves;
 	int player_x;
 	int player_y;
 	int player;
@@ -51,6 +47,12 @@ typedef struct s_map
 	char **map;
 	char **copy;
 } t_map;
+
+typedef struct	s_vars {
+	void	*mlx;
+	void	*win;
+	t_map	*map;
+}				t_vars;
 
 char		*get_next_line(int fd);
 char		*gn_rest(char *buffer);

@@ -6,16 +6,47 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 17:38:54 by ohaida            #+#    #+#             */
-/*   Updated: 2024/06/12 06:19:49 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/06/13 00:31:00 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 
+void    ft_move(t_vars *vars, int a, int b)
+{
+    char    c;
+
+    c = vars->map->map[vars->map->player_y + a][vars->map->player_x + b];
+    if (c == 'C' || c == '0')
+    {
+        if (c == 'C')
+            (vars->map->coins)--;
+        vars->map->map[vars->map->player_y][vars->map->player_x] = '0';
+        vars->map->map[vars->map->player_y + a][vars->map->player_x + b] = 'P';
+        (vars->map->player_y) += a;
+        (vars->map->player_x) += b;
+        (vars->map->moves)++;
+    }
+    else if(c == 'E'  && vars->map->coins == 0)
+            exit(ft_printf("exit reached"));
+}
+
 void render_player(int x, int y, void *mlx, void *mlx_win)
 {
 	void	*img;
 	char	*relative_path = "./assets/sprites/player.xpm";
+	int		img_width;
+	int		img_height;
+
+	
+	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
+	mlx_put_image_to_window(mlx, mlx_win, img, x * 32, y * 32);
+}
+
+void render_grass(int x, int y, void *mlx, void *mlx_win)
+{
+	void	*img;
+	char	*relative_path = "./assets/sprites/grass.xpm";
 	int		img_width;
 	int		img_height;
 
@@ -146,56 +177,71 @@ char **read_from_file(void)
 	return (map);
 }
 
-
-
-void render_map(t_vars *vars, t_map *map)
+int render_map(t_vars *vars)
 {
-	map->coins = 0;
-    map->map = read_from_file();
-    if (!(map->map))
+    int i = 0;
+    int j;
+    while (vars->map->map[i])
+    {
+        j = 0;
+        while (vars->map->map[i][j])
+        {
+            if (vars->map->map[i][j] == '1')
+                render_wall(j, i, vars->mlx, vars->win);
+            else if (vars->map->map[i][j] == 'C')
+                render_coins(j, i, vars->mlx, vars->win);
+            else if (vars->map->map[i][j] == 'P')
+                render_player(j, i, vars->mlx, vars->win);
+            else if (vars->map->map[i][j] == '0')
+                render_grass(j, i, vars->mlx, vars->win);
+            j++;
+        }
+        i++;
+    }
+    return (0);
+}
+
+void fill_map(t_vars *vars)
+{
+    vars->map->coins = 0;
+    vars->map->map = read_from_file();
+    if (!(vars->map->map))
 	{
 		ft_malloc(0, 1);
         exit(1);
 	}
-	map->y = 0;
-	while (map->map[map->y])
+	vars->map->y = 0;
+	while (vars->map->map[vars->map->y])
 	{
-		map->x = 0;
-		while (map->map[map->y][map->x])
+		vars->map->x = 0;
+		while (vars->map->map[vars->map->y][vars->map->x])
 		{
-			if (map->map[map->y][map->x] == '1')
+			if (vars->map->map[vars->map->y][vars->map->x] == '1')
+				(vars->map->wall)++;
+			else if (vars->map->map[vars->map->y][vars->map->x] == '0')
+				(vars->map->empty)++;
+			else if (vars->map->map[vars->map->y][vars->map->x] == 'P')
 			{
-				(map->wall)++;
-				render_wall(map->x, map->y, vars->mlx, vars->win);
+				vars->map->player_x = vars->map->x;
+				vars->map->player_y = vars->map->y;
+                (vars->map->player)++;
 			}
-			else if (map->map[map->y][map->x] == '0')
-				(map->empty)++;
-			else if (map->map[map->y][map->x] == 'P')
-			{
-				render_player(map->x, map->y, vars->mlx, vars->win);
-				map->player_x = map->x;
-				map->player_y = map->y;
-                (map->player)++;
-			}
-			else if (map->map[map->y][map->x] == 'E')
-                (map->exit)++;
-			else if (map->map[map->y][map->x] == 'C')
-			{
-				render_coins(map->x, map->y, vars->mlx, vars->win);
-				(map->coins)++;
-			}
+			else if (vars->map->map[vars->map->y][vars->map->x] == 'E')
+                (vars->map->exit)++;
+			else if (vars->map->map[vars->map->y][vars->map->x] == 'C')
+				(vars->map->coins)++;
 			else
 			{
 				ft_printf("ErrorSSSS\n");
 				ft_malloc(0, 1);
 				exit(1);
 			}
-			(map->x)++;
+			(vars->map->x)++;
 		}
-		(map->y)++;
+		(vars->map->y)++;
 	}
-	slchecker_wall(map);
-	if (all_reach(map))
+	slchecker_wall(vars->map);
+	if (all_reach(vars->map))
 	{
 		ft_printf("ErrorKKK\n");
 		ft_malloc(0, 1);
@@ -208,17 +254,17 @@ int key_hook(int keycode, t_vars *vars)
     if (keycode == 53)
     {
         mlx_destroy_window(vars->mlx, vars->win);
-		ft_malloc(0, 1);
+        ft_malloc(0, 1);
         exit(0);
     }
     else if (keycode == 13 || keycode == 126)
-        ft_printf("Player moved up\n");
+        ft_move(vars, -1, 0);
     else if (keycode == 0 || keycode == 123)
-        ft_printf("Player moved left\n");
+        ft_move(vars, 0, -1);
     else if (keycode == 1 || keycode == 125)
-        ft_printf("Player moved down\n");
+        ft_move(vars, 1, 0);
     else if (keycode == 2 || keycode == 124)
-        ft_printf("Player moved right\n");
+        ft_move(vars, 0, 1);
     return (0);
 }
 
@@ -232,14 +278,16 @@ int close_event(t_vars *vars)
 int main()
 {
     t_vars	vars;
-	t_map	map;
-	
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 34 * 32, 6 * 32, "so_long");
-	render_map(&vars, &map);
-	mlx_key_hook(vars.win, key_hook, &vars);
-	mlx_hook(vars.win, 17, 1L<<17, close_event, &vars);
-	mlx_loop(vars.mlx);
-	ft_malloc(0, 1);
-	return (0);
+    t_map	map;
+    
+    vars.map = &map;
+    vars.mlx = mlx_init();
+    vars.win = mlx_new_window(vars.mlx, 34 * 32, 6 * 32, "so_long");
+	fill_map(&vars);
+    mlx_key_hook(vars.win, key_hook, &vars);
+    mlx_hook(vars.win, 17, 1L<<17, close_event, &vars);
+    mlx_loop_hook(vars.mlx, render_map, &vars);
+    mlx_loop(vars.mlx);
+    ft_malloc(0, 1);
+    return (0);
 }
