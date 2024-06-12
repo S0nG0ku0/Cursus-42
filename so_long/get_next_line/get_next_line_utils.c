@@ -6,13 +6,13 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 17:38:45 by ohaida            #+#    #+#             */
-/*   Updated: 2024/01/23 17:38:47 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/06/10 19:41:52 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../libft/libft.h"
 
-char	*ft_gettext(char *line)
+char	*gn_gettext(char *line)
 {
 	char	*res;
 	int		i;
@@ -22,7 +22,7 @@ char	*ft_gettext(char *line)
 		return (free(line), line = NULL, NULL);
 	while (line[i] && line[i] != '\n')
 		i++;
-	if (!ft_strchr(line, '\n'))
+	if (!gn_strchr(line, '\n'))
 		i--;
 	res = malloc(i + 2);
 	if (!res)
@@ -33,13 +33,11 @@ char	*ft_gettext(char *line)
 		res[i] = line[i];
 		i++;
 	}
-	if (line[i] == '\n')
-		res[i++] = '\n';
 	res[i] = 0;
 	return (res);
 }
 
-char	*ft_strchr(char *s, int c)
+char	*gn_strchr(char *s, int c)
 {
 	int				i;
 	unsigned char	x;
@@ -57,7 +55,7 @@ char	*ft_strchr(char *s, int c)
 	return (0);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	gn_strlen(const char *s)
 {
 	int	i;
 
@@ -69,7 +67,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_getleast(char *b)
+char	*gn_getleast(char *b)
 {
 	char	*tmp;
 	int		i;
@@ -82,7 +80,7 @@ char	*ft_getleast(char *b)
 		i++;
 	if (b[i] == '\n')
 		i++;
-	tmp = malloc(ft_strlen(b) - i + 1);
+	tmp = malloc(gn_strlen(b) - i + 1);
 	if (!tmp)
 		return (free(b), b = NULL, NULL);
 	while (b[i] != '\0')
@@ -96,7 +94,7 @@ char	*ft_getleast(char *b)
 	return (tmp);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*gn_strjoin(char *s1, char *s2)
 {
 	char	*res;
 	int		i;
@@ -105,10 +103,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	i = -1;
 	j = 0;
 	if (!s1)
-		return (ft_strdup(s2));
+		return (gn_strdup(s2));
 	if (!s2)
-		return (ft_strdup(s1));
-	res = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+		return (gn_strdup(s1));
+	res = malloc(gn_strlen(s1) + gn_strlen(s2) + 1);
 	if (!res)
 		return (free(s1), NULL);
 	while (s1[++i])

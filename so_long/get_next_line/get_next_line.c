@@ -6,20 +6,20 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 17:38:54 by ohaida            #+#    #+#             */
-/*   Updated: 2024/02/02 08:34:31 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/06/10 17:50:08 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../libft/libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*gn_strdup(const char *s1)
 {
 	int			i;
 	size_t		len;
 	char		*str;
 
 	i = 0;
-	len = ft_strlen(s1);
+	len = gn_strlen(s1);
 	str = malloc(len + 1);
 	if (str == NULL)
 		return (NULL);
@@ -32,7 +32,7 @@ char	*ft_strdup(const char *s1)
 	return (str);
 }
 
-char	*ft_read(int fd, char *str)
+char	*gn_read(int fd, char *str)
 {
 	char	*buff;
 	int		readed;
@@ -41,13 +41,13 @@ char	*ft_read(int fd, char *str)
 	if (!buff)
 		return (free(str), str = NULL, NULL);
 	readed = 1;
-	while (!ft_strchr(str, '\n') && readed != 0)
+	while (!gn_strchr(str, '\n') && readed != 0)
 	{
 		readed = read(fd, buff, BUFFER_SIZE);
 		buff[readed] = '\0';
 		if (readed == -1)
 			return (free(buff), NULL);
-		str = ft_strjoin(str, buff);
+		str = gn_strjoin(str, buff);
 	}
 	free(buff);
 	if (!str || !*str)
@@ -64,12 +64,12 @@ char	*get_next_line(int fd)
 	if (BUFFER_SIZE <= 0
 		|| read(fd, 0, 0) == -1 || BUFFER_SIZE > INT_MAX)
 		return (free(buffer), buffer = NULL, NULL);
-	buffer = ft_read(fd, buffer);
+	buffer = gn_read(fd, buffer);
 	if (!buffer)
 		return (NULL);
-	line = ft_gettext(buffer);
+	line = gn_gettext(buffer);
 	if (!line)
 		return (free (buffer), buffer = NULL, NULL);
-	buffer = ft_getleast(buffer);
+	buffer = gn_getleast(buffer);
 	return (line);
 }
