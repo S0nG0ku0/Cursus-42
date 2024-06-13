@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 11:21:40 by ohaida            #+#    #+#             */
-/*   Updated: 2024/05/26 16:25:01 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/06/13 01:54:31 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	check_overflow(long long n, int neg)
 	if (n * neg > INT_MAX || n * neg < INT_MIN)
 	{
 		ft_putstr_fd("Error\n", 2);
+		ft_malloc(0, 1);
 		exit(1);
 	}
 }

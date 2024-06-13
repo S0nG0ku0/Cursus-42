@@ -6,7 +6,7 @@
 /*   By: ohaida <ohaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:36:43 by ohaida            #+#    #+#             */
-/*   Updated: 2024/06/12 22:50:36 by ohaida           ###   ########.fr       */
+/*   Updated: 2024/06/13 02:19:07 by ohaida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ typedef struct s_map
 	int player;
 	int coins;
 	int exit;
-	int wall;
-	int empty;
 	char **map;
 	char **copy;
 } t_map;
@@ -52,6 +50,7 @@ typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
 	t_map	*map;
+	char	*path;
 }				t_vars;
 
 char		*get_next_line(int fd);
